@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LoginComponent } from './tela-login/tela-login.component';
+import { CadastroComponent } from './tela-cadastro/tela-cadastro.component';
+
+
+const routes: Routes = [
+  { path: '', component: LoginComponent  },
+  { path: 'cadastro', component: CadastroComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

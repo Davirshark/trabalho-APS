@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="box">
+        <nz-card style="width: 450px;
+        height: 500px;" nzTitle="Login">
+        <div style="margin-top: -20px; margin-bottom: 30px; display: flex; justify-content: center;" >
+         <img src="/assets/meupet.jpg" style ="width: 200px; height: 200px;"
+         />
+        </div>
+            <form nz-form class="login-form" [formGroup] = "form">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Digite seu nome!">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" formControlName = "nick" nz-input placeholder="Usuário" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Digite sua senha!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input formControlName = "password" type="password" nz-input placeholder="Senha"  />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            <div class="footer">
+                <div nz-row class="login-form-margin">
+                    <div nz-col [nzSpan]="12">
+                        <a class="login-form-forgot">Esqueceu a senha?</a>
+                    </div>
+                </div>
+                <button nz-button nzType="primary" (click) = "submit()" [disabled] = "!this.form.valid">Entrar</button>
+                ou
+                <a [routerLink]="['/cadastro']">cadastre-se agora!</a>
+            </div>
+            </form>
+        </nz-card>
+        <ng-template #extraTemplate>
+            <a>More</a>
+        </ng-template>
+    </div>
+</div>
