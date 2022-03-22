@@ -1,5 +1,5 @@
 login-form {
-    max-width: 300px;
+    
   }
 
   .login-form-margin {
@@ -33,16 +33,10 @@ login-form {
 
 button:disabled,
 button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
 }
 
 button:enabled,
 button[enabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: purple;
   cursor: pointer;
 }
 
@@ -50,3 +44,74 @@ button[enabled]{
     display: flex;
     justify-content: center;
 }
+
+[nz-form] {
+    max-width: 600px;
+  }
+
+  
+  .recaptcha-wrapper {
+    height: 70px;
+  overflow: hidden;
+  background-color: #F9F9F9;
+  border-radius: 3px;
+  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.08);
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.08);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.08);
+  height: 70px;
+  position: relative;
+  margin-top: 17px;
+  border: 1px solid #d3d3d3;
+  color: #000;
+}
+
+.recaptcha-info {
+  background-size: 32px;
+  height: 32px;
+  margin: 0 13px 0 13px;
+  position: absolute;
+  right: 8px;
+  top: 9px;
+  width: 32px;
+  background-image: url(https://www.gstatic.com/recaptcha/api2/logo_48.png);
+  background-repeat: no-repeat;
+}
+.rc-anchor-logo-text {
+  color: #9b9b9b;
+  cursor: default;
+  font-family: Roboto,helvetica,arial,sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
+  margin-top: 5px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 37px;
+}
+.rc-anchor-checkbox-label {
+  font-family: Roboto,helvetica,arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  left: 50px;
+  top: 26px;
+  position: absolute;
+  color: black;
+}
+.rc-anchor .rc-anchor-normal .rc-anchor-light {
+  border: none;
+}
+.rc-anchor-pt {
+  color: #9b9b9b;
+  font-family: Roboto,helvetica,arial,sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  right: 10px;
+  top: 53px;
+  position: absolute;
+}
+
+
+
+

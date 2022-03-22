@@ -21,6 +21,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button'
+
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { AutoFocusDirective } from './directives/auto-focus.directive';
+
 
 registerLocaleData(pt);
 
@@ -28,7 +34,8 @@ registerLocaleData(pt);
   declarations: [
     AppComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    AutoFocusDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,11 @@ registerLocaleData(pt);
     NzIconModule,
     NzInputModule,
     NzImageModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NgxCaptchaModule,
+    NzCheckboxModule,
+    NzButtonModule
+    
   ],
   providers: [{ provide: NZ_I18N, useValue: pt_PT }],
   bootstrap: [AppComponent]

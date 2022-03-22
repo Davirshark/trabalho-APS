@@ -1,38 +1,54 @@
 <div class="container">
     <div class="box">
         <nz-card style="width: 450px;
-        height: 500px;" nzTitle="Cadastro">
+        height: 500px;" nzTitle="Cadastrar">
             <form nz-form class="login-form" [formGroup]="form">
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Digite seu nome!">
-                        <nz-input-group>
-                            <input type="text" formControlName="nick" nz-input placeholder="Usuário" />
-                        </nz-input-group>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                        <input autoFocus nz-input formControlName="email" id="email" />
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Digite sua senha!">
-                        <nz-input-group>
-                            <input formControlName="password" type="password" nz-input placeholder="Senha" />
-                        </nz-input-group>
+                    <nz-form-label nzTooltipTitle="Como você quer ser chamado" [nzSm]="6" [nzXs]="24"
+                        nzRequired>Nickname</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                        <input nz-input formControlName="nick" id="nick" />
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-control>
-                        <nz-date-picker formControlName = "nascimento" (ngModelChange)="onChange($event)"></nz-date-picker>
-                    
-                    <br />
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Senha</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                        <input nz-input type="password" id="password" formControlName="password" />
                     </nz-form-control>
                 </nz-form-item>
-                <div class="footer">
-                    <div nz-row class="login-form-margin">
-                        <div nz-col [nzSpan]="12">
-                            <a class="login-form-forgot">Esqueceu a senha?</a>
-                        </div>
-                    </div>
-                    <button nz-button nzType="primary" (click)="submit()" [disabled]="!this.form.valid">Cadastrar</button>
-                </div>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Nascimento</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                        <nz-date-picker formControlName="nascimento"></nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                        <ngx-recaptcha2 #captchaElement [siteKey]="siteKey" 
+                            formControlName="recaptcha">
+                        </ngx-recaptcha2>
+                    </nz-form-control>
+
+                </nz-form-item>
             </form>
+            <div nz-row class="login-form-margin">
+                <div style = "margin-right: auto; margin-top: -10px;" nz-col [nzSpan]="12">
+                  <label nz-checkbox [(ngModel)]="isCheckedButton">
+                    <span>Aceito os termos de serviço</span>
+                  </label>
+                </div>
+            </div>
+            <div style = "display: flex; margin-top: 10px;">
+            <button nz-button nzType="primary" [disabled] = " !this.form.valid || !this.isCheckedButton" (click) = "acessar()">Cadastrar</button>
+            <button nz-button nzType="primary" style = "margin-left: 20px;"  [routerLink]="['']">Voltar</button>
+            </div>
+
         </nz-card>
         <ng-template #extraTemplate>
             <a>More</a>

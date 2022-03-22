@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { getISOWeek } from 'date-fns';
-import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
+import { FormControl, FormGroup, Validators, FormBuilder, ValidatorFn } from '@angular/forms';
+import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { Usuario } from '../models/usuario';
+
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -9,32 +10,43 @@ import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
   styleUrls: ['./tela-cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
-  form: FormGroup
-  date = null;
-  constructor() {
-    this.form = this.initForm();
-   }
-  
-   initForm() {
-    return new FormGroup({ 
-      id: new FormControl(''),
-      nome: new FormControl(''),
-      nick: new FormControl('', [Validators.maxLength(50), Validators.required]),
-      email: new FormControl(''), 
-      password: new FormControl('', [Validators.maxLength(50), Validators.required]),
-      nascimento: new FormControl('')
-    })
+  form: FormGroup;
+  siteKey: string
+  captchaTooltipIcon: NzFormTooltipIcon = {
+    type: 'info-circle',
+    theme: 'twotone'
+  };
+  size: string;
+  theme: string;
+  isCheckedButton: true;
+  usuarioCadastrar = {} as FormGroup
+
+  constructor(private fb: FormBuilder) {
+    this.siteKey = "6LeDKwEfAAAAAFALOQnsjZSuQUd-ghX9_E8oR2Zq"
+    this.size = 'compact'
+    this.theme = 'dark'
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required]],
+      nick: ['', [Validators.required]],
+      nascimento: ['', [Validators.required]],
+      recaptcha: ['', Validators.required]
+    });
   }
 
-  onChange(result: Event): void {
-    
-  }
-
-  submit(){
-    console.log(this.form.value)
-    this.form.reset()
+ 
+  acessar() {
+    this.usuarioCadastrar = new FormGroup ({
+      email: new FormControl (this.form.value.email),
+      password: new FormControl (this.form.value.password) ,
+      nick: new FormControl (this.form.value.nick),
+      nascimento: new FormControl (this.form.value.nascimento),
+    })
+  
+    console.log(this.form.value);
+    console.log(this.usuarioCadastrar.value);
   }
 }
