@@ -1,6 +1,6 @@
 export interface Usuario {
     nome: string
-    idade: Date
+    nascimento: Date
     id: number
     nick: string
     email: string

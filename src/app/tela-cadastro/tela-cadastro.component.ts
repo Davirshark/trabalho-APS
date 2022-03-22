@@ -22,7 +22,7 @@ export class CadastroComponent implements OnInit {
       nick: new FormControl('', [Validators.maxLength(50), Validators.required]),
       email: new FormControl(''), 
       password: new FormControl('', [Validators.maxLength(50), Validators.required]),
-      idade: new FormControl('')
+      nascimento: new FormControl('')
     })
   }
 
